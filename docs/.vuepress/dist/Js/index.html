@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>常用Js片段 | 复制粘贴工程师</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    
+    <meta name="description" content="天下武功，唯快不破">
+    
+    <link rel="preload" href="/copy-and-paste/assets/css/0.styles.7b33d26d.css" as="style"><link rel="preload" href="/copy-and-paste/assets/js/app.9847cfa7.js" as="script"><link rel="preload" href="/copy-and-paste/assets/js/2.77e18420.js" as="script"><link rel="preload" href="/copy-and-paste/assets/js/7.913d3fd3.js" as="script"><link rel="prefetch" href="/copy-and-paste/assets/js/3.b19ae95c.js"><link rel="prefetch" href="/copy-and-paste/assets/js/4.aed3a2a3.js"><link rel="prefetch" href="/copy-and-paste/assets/js/5.70cee05b.js"><link rel="prefetch" href="/copy-and-paste/assets/js/6.6639f339.js"><link rel="prefetch" href="/copy-and-paste/assets/js/8.df627cef.js"><link rel="prefetch" href="/copy-and-paste/assets/js/9.8d869104.js">
+    <link rel="stylesheet" href="/copy-and-paste/assets/css/0.styles.7b33d26d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/copy-and-paste/" class="home-link router-link-active"><!----> <span class="site-name">复制粘贴工程师</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/copy-and-paste/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/copy-and-paste/Js/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  常用Js片段
+</a></div><div class="nav-item"><a href="/copy-and-paste/css/" class="nav-link">
+  常用Css片段
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/copy-and-paste/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><a href="/copy-and-paste/Js/" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  常用Js片段
+</a></div><div class="nav-item"><a href="/copy-and-paste/css/" class="nav-link">
+  常用Css片段
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>常用Js片段</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/copy-and-paste/Js/#回到顶部" class="sidebar-link">回到顶部</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/copy-and-paste/Js/#获取-url-上的参数" class="sidebar-link">获取 url 上的参数</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/copy-and-paste/Js/#是否属于某个类型" class="sidebar-link">是否属于某个类型</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="常用js片段"><a href="#常用js片段" class="header-anchor">#</a> 常用Js片段</h1> <h2 id="回到顶部"><a href="#回到顶部" class="header-anchor">#</a> 回到顶部</h2> <p>平滑滚动到顶部</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">scrollToTop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> c <span class="token operator">=</span> document<span class="token punctuation">.</span>documentElement<span class="token punctuation">.</span>scrollTop <span class="token operator">||</span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>scrollTop<span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    window<span class="token punctuation">.</span><span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>scrollToTop<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    window<span class="token punctuation">.</span><span class="token function">scrollTo</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> c <span class="token operator">-</span> c <span class="token operator">/</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token function">scrollToTop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><h2 id="获取-url-上的参数"><a href="#获取-url-上的参数" class="header-anchor">#</a> 获取 url 上的参数</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">getURLParameters</span> <span class="token operator">=</span> <span class="token parameter">url</span> <span class="token operator">=&gt;</span>
+  <span class="token punctuation">(</span>url<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">([^?=&amp;]+)(=([^&amp;]*))</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> v</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>
+      <span class="token punctuation">(</span>a<span class="token punctuation">[</span>v<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">&quot;=&quot;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">=</span> v<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">&quot;=&quot;</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span> a
+    <span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">getURLParameters</span><span class="token punctuation">(</span><span class="token string">&quot;http://url.com/page?name=Adam&amp;surname=Smith&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment">// {name: 'Adam', surname: 'Smith'}</span>
+<span class="token function">getURLParameters</span><span class="token punctuation">(</span><span class="token string">&quot;google.com&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token comment">// {}</span>
+
+</code></pre></div><h2 id="是否属于某个类型"><a href="#是否属于某个类型" class="header-anchor">#</a> 是否属于某个类型</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 是否数字</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">isNumber</span> <span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">typeof</span> v <span class="token operator">===</span> <span class="token string">'number'</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 是否字符串</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">isString</span> <span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">typeof</span> v <span class="token operator">===</span> <span class="token string">'string'</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 是否对象</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">isObject</span> <span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'[object Object]'</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 是否函数</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">isFunction</span> <span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">typeof</span> v <span class="token operator">===</span> <span class="token string">'function'</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 是否undefined</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">isUndefined</span> <span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> v <span class="token operator">===</span> <span class="token keyword">undefined</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 布尔</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">isBoolean</span> <span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">typeof</span> v <span class="token operator">===</span> <span class="token string">'boolean'</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 数组</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">isArray</span> <span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+<span class="token comment">// 空对象</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">isEmptyObject</span> <span class="token punctuation">(</span><span class="token parameter">v</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isObject</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span>
+  <span class="token keyword">return</span> Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/copy-and-paste/assets/js/app.9847cfa7.js" defer></script><script src="/copy-and-paste/assets/js/2.77e18420.js" defer></script><script src="/copy-and-paste/assets/js/7.913d3fd3.js" defer></script>
+  </body>
+</html>
