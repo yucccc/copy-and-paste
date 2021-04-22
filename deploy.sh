@@ -6,6 +6,11 @@ set -e
 # 生成静态文件
 npm run docs:build
 
+git add -A
+git commit -m '自动备份'
+# 将代码发布到master分支
+git push https://github.com/yucccc/copy-and-paste.git master
+
 # 进入生成的文件夹
 cd docs/.vuepress/dist
 
@@ -23,3 +28,7 @@ git commit -m 'deploy'
 git push -f https://github.com/yucccc/copy-and-paste.git master:gh-pages
 
 cd -
+
+
+
+
