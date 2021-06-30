@@ -129,7 +129,7 @@ getSingleDesgin(_getDeviceType)
 interface _stringifyConfigType {
     /**
      * 是否将值加码 用于值包含特殊符合时
-     * encodeURIComponent(value) 目前为了兼容活动传递的 userid可能带有&符号
+     * encodeURIComponent(value) 可能某些key带有&符号 兼容该行为
      */
     isEncodeParam?: boolean | false;
     /**
@@ -154,4 +154,124 @@ export const _stringify = function (data: any, config?: _stringifyConfigType): s
     return _result.join(joinStr);
 }
 
+```
+
+## 深拼合数组
+
+```ts
+/**
+ * 深拼合数组
+ * @param {*} arr 
+ * @returns deepFlatten([1,[2],[[3],4],5]) -> [1,2,3,4,5]
+ */
+ 
+export const deepFlatten = arr => [].concat(...arr.map(v => Array.isArray(v) ? deepFlatten(v) : v));
+```
+
+
+## 检查对象内是否缺少某个字段
+```ts
+/**
+ * 检查对象内是否缺少某个字段 并返回缺少的字段
+ * @param needCheckParams 
+ * @param isReqParams 
+ * @returns string[]
+ */
+export const checkParamsMiss = function(needCheckParams: object, isReqParams: string[]): string[] {
+    // 非对象直接返回参数校验
+    if (isEmptyObject(needCheckParams)) return isReqParams
+
+    return isReqParams.filter(key => {
+        const v = needCheckParams[key]
+        // 该值为非0假值
+        if (v !== 0 && !v) {
+            return key
+        }
+    })
+}
+```
+
+## 检验参数装饰器
+> 装饰器方式使用 依赖checkParamsMiss
+```ts
+/**
+ * 检验参数装饰器
+ * @checkParamsMissDec(['a', 'b'], (isReqParams) => isReqParams)
+ *
+ * @param isReqParams  必填的参数列表
+ * @param callback 当发生错误时 不会执行原函数 会执行callback
+ * 
+ */
+export const checkParamsMissDec = function (isReqParams: string[], callback?: Function) {
+
+    return function (target, name, descriptor) {
+        const oldValue = descriptor.value;
+        descriptor.value = function(...arg: any[]) {
+            const needCheckParams = arg[0]
+
+            console.log(`检验 ${name} 参数是否传递正确`, needCheckParams, isReqParams)
+
+            const p = checkParamsMiss(needCheckParams, isReqParams)
+
+            if (p.length) {
+                console.error(` ${name} 缺少必填参数`, ...p)
+                return callback && callback(p)
+            }
+            // 参数检验没问题执行原函数
+            return oldValue.apply(this, arg);
+        }
+
+        return descriptor;
+    }
+}
+```
+
+
+## 将对象字段修正为另外的key
+
+```js
+/**
+ * 将数据字段修正
+ * @param toFixParams         想要修正的参数
+ * @param fixFieldParams      修正成什么字段
+ * @param config        
+ *          isWarn      是否需要预警字段被修正 因为该方法会删除传入的字段
+ *          warnText    
+ * @returns fixField({a:1}, {a:'b'}) => {b:1}
+ */
+export const fixField = function (toFixParams: object, fixFieldParams: object, config?: fixFieldConfigRes  ) {
+    if (isEmptyObject(toFixParams)) return {}
+    const { isWarn = false, warnTextFunc = warnTextFuncDef } = config || {}
+    let newObject = {...toFixParams}
+    for (const [key, value] of Object.entries(toFixParams)) {
+        let newKey = fixFieldParams[key]
+        if (newKey) {
+            // 只是输出提示
+            isWarn && console.warn(warnTextFunc(key, newKey))
+            newObject[newKey] = value
+            delete newObject[key]
+        }
+    }
+    return newObject
+}
+
+function warnTextFuncDef(key, newKey) {
+    return `字段${key}被重置为${newKey}`
+}
+interface fixFieldConfigRes {
+    isWarn?: boolean;
+    warnTextFunc?: (key: string, newKey: string) => string
+}
+
+```
+
+## 将对象stringify
+```ts
+/**
+ * 将对象stringify
+ */
+export const toStringify = function(obj) {
+    if (isObject(obj)) return JSON.stringify(obj)
+    return obj
+}
 ```
