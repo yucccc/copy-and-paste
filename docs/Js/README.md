@@ -229,7 +229,7 @@ export const checkParamsMissDec = function (isReqParams: string[], callback?: Fu
 
 ## 将对象字段修正为另外的key
 
-```js
+```ts
 /**
  * 将数据字段修正
  * @param toFixParams         想要修正的参数

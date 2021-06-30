@@ -8,7 +8,7 @@
     
     <meta name="description" content="天下武功，唯快不破">
     
-    <link rel="preload" href="/copy-and-paste/assets/css/0.styles.49254b5e.css" as="style"><link rel="preload" href="/copy-and-paste/assets/js/app.1069da86.js" as="script"><link rel="preload" href="/copy-and-paste/assets/js/2.bb4ae703.js" as="script"><link rel="preload" href="/copy-and-paste/assets/js/7.3cce6032.js" as="script"><link rel="prefetch" href="/copy-and-paste/assets/js/3.9bdde645.js"><link rel="prefetch" href="/copy-and-paste/assets/js/4.40617b43.js"><link rel="prefetch" href="/copy-and-paste/assets/js/5.83a8838f.js"><link rel="prefetch" href="/copy-and-paste/assets/js/6.01b7b13c.js"><link rel="prefetch" href="/copy-and-paste/assets/js/8.dcaf2baf.js"><link rel="prefetch" href="/copy-and-paste/assets/js/9.d879e7b3.js">
+    <link rel="preload" href="/copy-and-paste/assets/css/0.styles.49254b5e.css" as="style"><link rel="preload" href="/copy-and-paste/assets/js/app.6b0d0c9d.js" as="script"><link rel="preload" href="/copy-and-paste/assets/js/2.bb4ae703.js" as="script"><link rel="preload" href="/copy-and-paste/assets/js/7.ad2cba9d.js" as="script"><link rel="prefetch" href="/copy-and-paste/assets/js/3.9bdde645.js"><link rel="prefetch" href="/copy-and-paste/assets/js/4.40617b43.js"><link rel="prefetch" href="/copy-and-paste/assets/js/5.83a8838f.js"><link rel="prefetch" href="/copy-and-paste/assets/js/6.01b7b13c.js"><link rel="prefetch" href="/copy-and-paste/assets/js/8.97c42094.js"><link rel="prefetch" href="/copy-and-paste/assets/js/9.98856984.js">
     <link rel="stylesheet" href="/copy-and-paste/assets/css/0.styles.49254b5e.css">
   </head>
   <body>
@@ -201,7 +201,7 @@
         <span class="token keyword">return</span> descriptor<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
-</code></pre></div><h2 id="将对象字段修正为另外的key"><a href="#将对象字段修正为另外的key" aria-hidden="true" class="header-anchor">#</a> 将对象字段修正为另外的key</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/**
+</code></pre></div><h2 id="将对象字段修正为另外的key"><a href="#将对象字段修正为另外的key" aria-hidden="true" class="header-anchor">#</a> 将对象字段修正为另外的key</h2> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">/**
  * 将数据字段修正
  * @param toFixParams         想要修正的参数
  * @param fixFieldParams      修正成什么字段
@@ -210,7 +210,7 @@
  *          warnText    
  * @returns fixField({a:1}, {a:'b'}) =&gt; {b:1}
  */</span>
-<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">fixField</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">toFixParams<span class="token operator">:</span> object<span class="token punctuation">,</span> fixFieldParams<span class="token operator">:</span> object<span class="token punctuation">,</span> config<span class="token operator">?</span><span class="token operator">:</span> fixFieldConfigRes</span>  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">fixField</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>toFixParams<span class="token operator">:</span> object<span class="token punctuation">,</span> fixFieldParams<span class="token operator">:</span> object<span class="token punctuation">,</span> config<span class="token operator">?</span><span class="token operator">:</span> fixFieldConfigRes  <span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isEmptyObject</span><span class="token punctuation">(</span>toFixParams<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
     <span class="token keyword">const</span> <span class="token punctuation">{</span> isWarn <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span> warnTextFunc <span class="token operator">=</span> warnTextFuncDef <span class="token punctuation">}</span> <span class="token operator">=</span> config <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
     <span class="token keyword">let</span> newObject <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">...</span>toFixParams<span class="token punctuation">}</span>
@@ -218,7 +218,7 @@
         <span class="token keyword">let</span> newKey <span class="token operator">=</span> fixFieldParams<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
         <span class="token keyword">if</span> <span class="token punctuation">(</span>newKey<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token comment">// 只是输出提示</span>
-            isWarn <span class="token operator">&amp;&amp;</span> console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token function">warnTextFunc</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> newKey<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            isWarn <span class="token operator">&amp;&amp;</span> <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token function">warnTextFunc</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> newKey<span class="token punctuation">)</span><span class="token punctuation">)</span>
             newObject<span class="token punctuation">[</span>newKey<span class="token punctuation">]</span> <span class="token operator">=</span> value
             <span class="token keyword">delete</span> newObject<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
         <span class="token punctuation">}</span>
@@ -226,12 +226,12 @@
     <span class="token keyword">return</span> newObject
 <span class="token punctuation">}</span>
 
-<span class="token keyword">function</span> <span class="token function">warnTextFuncDef</span><span class="token punctuation">(</span><span class="token parameter">key<span class="token punctuation">,</span> newKey</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">warnTextFuncDef</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> newKey<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">字段</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>key<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">被重置为</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>newKey<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
 <span class="token punctuation">}</span>
 <span class="token keyword">interface</span> <span class="token class-name">fixFieldConfigRes</span> <span class="token punctuation">{</span>
-    isWarn<span class="token operator">?</span><span class="token operator">:</span> boolean<span class="token punctuation">;</span>
-    warnTextFunc<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">key<span class="token operator">:</span> string<span class="token punctuation">,</span> newKey<span class="token operator">:</span> string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> string
+    isWarn<span class="token operator">?</span><span class="token operator">:</span> <span class="token builtin">boolean</span><span class="token punctuation">;</span>
+    warnTextFunc<span class="token operator">?</span><span class="token operator">:</span> <span class="token punctuation">(</span>key<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">,</span> newKey<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token builtin">string</span>
 <span class="token punctuation">}</span>
 
 </code></pre></div><h2 id="将对象stringify"><a href="#将对象stringify" aria-hidden="true" class="header-anchor">#</a> 将对象stringify</h2> <div class="language-ts extra-class"><pre class="language-ts"><code><span class="token comment">/**
@@ -242,6 +242,6 @@
     <span class="token keyword">return</span> obj
 <span class="token punctuation">}</span>
 </code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
-    <script src="/copy-and-paste/assets/js/app.1069da86.js" defer></script><script src="/copy-and-paste/assets/js/2.bb4ae703.js" defer></script><script src="/copy-and-paste/assets/js/7.3cce6032.js" defer></script>
+    <script src="/copy-and-paste/assets/js/app.6b0d0c9d.js" defer></script><script src="/copy-and-paste/assets/js/2.bb4ae703.js" defer></script><script src="/copy-and-paste/assets/js/7.ad2cba9d.js" defer></script>
   </body>
 </html>
