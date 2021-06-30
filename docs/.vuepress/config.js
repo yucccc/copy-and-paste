@@ -7,6 +7,7 @@ module.exports = {
             { text: '主页', link: '/' },
             { text: '常用Js片段', link: '/Js/' },
             { text: '常用Css片段', link: '/css/' },
+            { text: 'Github', link: 'https://github.com/yucccc/copy-and-paste' },
         ],
         sidebar: 'auto'
     }
