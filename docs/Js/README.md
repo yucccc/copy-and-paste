@@ -112,8 +112,7 @@ function _getDeviceType(): 'android'| 'ios' | 'pc' {
     return 'pc';
 }
 
-export const getDeviceType: () => 'android'| 'ios' | 'pc'  = 
-getSingleDesgin(_getDeviceType)
+export const getDeviceType: () => 'android'| 'ios' | 'pc'  = getSingleDesgin(_getDeviceType)
 
 ```
 
